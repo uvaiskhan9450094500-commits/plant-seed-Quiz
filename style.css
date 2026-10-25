@@ -1,0 +1,394 @@
+body {
+    background-color: #e8f5e9;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 30px 15px;
+}
+
+h1 {
+    color: #1b5e20;
+    font-size: 38px;
+}
+
+body > p {
+    color: #444;
+    font-size: 18px;
+}
+
+button {
+    background-color: #2e7d32;
+    color: white;
+    padding: 12px 22px;
+    margin: 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1b5e20;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+
+#quiz {
+    background-color: white;
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 30px 20px;
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#quiz h2 {
+    color: #2e7d32;
+    font-size: 30px;
+}
+
+#quiz p {
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    #quiz {
+        padding: 20px 10px;
+    }
+
+    #quiz h2 {
+        font-size: 24px;
+    }
+
+    button {
+        padding: 10px 14px;
+    }
+}
+
+#progress-container {
+    width: 80%;
+    max-width: 850px;
+    height: 15px;
+    background-color: #c8e6c9;
+    border-radius: 10px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #2e7d32;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+/* Home Screen Design */
+body {
+    background: linear-gradient(to bottom, #e8f5e9, #c8e6c9);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    color: #234b2c;
+}
+
+h1 {
+    color: #176b35;
+    font-size: 38px;
+    margin-top: 25px;
+}
+
+body > p {
+    font-size: 18px;
+    color: #456b4a;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
+button {
+    background-color: #16833b;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    margin: 6px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0c5725;
+    transform: scale(1.04);
+}
+
+/* Quiz Box */
+#quiz {
+    background-color: #ffffff;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Question Heading */
+#quiz h2 {
+    color: #16833b;
+    font-size: 30px;
+}
+
+/* Mobile Screen */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    #quiz {
+        padding: 15px;
+    }
+
+    button {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
+/* ===== Beautiful Plant Quiz Design ===== */
+
+body {
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9, #dcedc8);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 25px 15px;
+    color: #24452a;
+}
+
+/* Main Heading */
+
+h1 {
+    color: #176b35;
+    font-size: 42px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-shadow: 1px 2px 3px #c8e6c9;
+}
+
+/* Welcome Text */
+
+body > p {
+    color: #527358;
+    font-size: 19px;
+    margin: 15px auto 25px;
+}
+
+/* Buttons */
+
+button {
+    background: linear-gradient(135deg, #2e8b45, #176b35);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    margin: 8px;
+    border-radius: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(30, 100, 45, 0.2);
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #124d27;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(30, 100, 45, 0.3);
+}
+
+/* Quiz Box */
+
+#quiz {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 850px;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px rgba(39, 92, 49, 0.12);
+    border: 1px solid #d8ead9;
+}
+
+/* Question Heading */
+
+#quiz h2 {
+    color: #20743a;
+    font-size: 27px;
+    line-height: 1.5;
+}
+
+/* Quiz Text */
+
+#quiz p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Progress Bar */
+
+#progress-container {
+    width: 85%;
+    max-width: 850px;
+    height: 13px;
+    background-color: #d7e8d5;
+    border-radius: 20px;
+    margin: 25px auto;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #81c784, #23843c);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+/* Answer Options */
+
+#quiz button {
+    min-width: 180px;
+    max-width: 100%;
+}
+
+/* Result Screen */
+
+#quiz h3 {
+    color: #20743a;
+    font-size: 28px;
+}
+
+/* Mobile Screen */
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px 8px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    body > p {
+        font-size: 16px;
+    }
+
+    #quiz {
+        padding: 18px 12px;
+        margin: 20px auto;
+    }
+
+    #quiz h2 {
+        font-size: 22px;
+    }
+
+    #quiz button {
+        min-width: 130px;
+        padding: 11px 16px;
+        font-size: 15px;
+    }
+
+    #progress-container {
+        width: 92%;
+    }
+}
+/* Plant Photos - Smaller Size */
+.welcome-image {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 10px;
+}
+
+/* Quiz Options - Smaller Size */
+#quiz button {
+    padding: 8px 14px;
+    margin: 5px;
+    font-size: 15px;
+    border-radius: 8px;
+    min-width: 180px;
+    max-width: 100%;
+}
+
+/* Question Text */
+#quiz h2 {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+/* Small Screen Adjustment */
+@media (max-width: 600px) {
+    .welcome-image {
+        width: 140px;
+        height: 100px;
+    }
+
+    #quiz button {
+        min-width: 140px;
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}/* Hide home screen after quiz starts */
+body.quiz-started #home-screen {
+    display: none;
+}
+
+/* Hide quiz area before starting */
+body:not(.quiz-started) #quiz,
+body:not(.quiz-started) #progress-container {
+    display: none;
+}
+
+/* Home screen photo */
+.welcome-image img {
+    width: 260px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+}
+
+/* Keep home and quiz screens separate */
+#quiz-screen[hidden] {
+    display: none !important;
+}
+
+#quiz-screen:not([hidden]) {
+    display: block;
+}
+
+/* Hide home screen after quiz starts */
+body.quiz-started #home-screen {
+    display: none;
+}
+
+body.quiz-started #quiz-screen[hidden] {
+    display: block !important;
+}
+
+@media (max-width: 600px) {
+    .welcome-image img {
+        width: 180px;
+        height: 130px;
+    }
+}
+
