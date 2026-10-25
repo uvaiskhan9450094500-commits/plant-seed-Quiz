@@ -1,25 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>plant seed quiz</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <p>Welcome To My Quiz website!</p>
-
-    <div id="progress-container">
-        <div id="progress-bar"></div>
-    </div>
-
-    <div  id="quiz"></div>
-
-    <script src="script.js"></script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,17 +11,8 @@
     <header class="welcome-section">
         <div class="welcome-text">
             <p class="small-heading">🌿 LEARN • GROW • EXPLORE</p>
-
             <h1>Plant and Seed Quiz</h1>
-
-            <p>
-                Discover the wonderful world of plants,
-                seeds and nature!
-            </p>
-
-            <button id="start-button" onclick="startQuiz()">
-                Start Quiz 🌱
-            </button>
+            <p>Discover the wonderful world of plants, seeds and nature!</p>
         </div>
 
         <div class="welcome-image">
@@ -50,69 +20,64 @@
                 src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=85"
                 alt="Beautiful green plants growing in pots">
         </div>
+
+        <button id="start-button" onclick="startQuiz()">
+            Start Quiz 🌱
+        </button>
     </header>
 
     <section class="learning-section">
         <h2>Explore the Green World</h2>
-
         <p class="section-description">
             Learn something new about nature every day.
         </p>
 
         <div class="card-container">
-
             <div class="plant-card">
                 <img
                     src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80"
                     alt="Green plants">
-
                 <h3>🌿 Learn About Plants</h3>
-
-                <p>
-                    Discover how plants grow and why
-                    they are important for our planet.
-                </p>
+                <p>Discover how plants grow and why they are important for our planet.</p>
             </div>
 
             <div class="plant-card">
                 <img
                     src="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=600&q=80"
                     alt="Growing plants">
-
                 <h3>🌱 Seed Knowledge</h3>
-
-                <p>
-                    Explore seeds, germination and
-                    the beginning of plant life.
-                </p>
+                <p>Explore seeds, germination and the beginning of plant life.</p>
             </div>
 
             <div class="plant-card">
                 <img
                     src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=600&q=80"
                     alt="Garden full of plants">
-
                 <h3>🎯 Test Your Knowledge</h3>
-
-                <p>
-                    Answer fun questions and discover
-                    how much you know about plants.
-                </p>
+                <p>Answer fun questions and discover how much you know about plants.</p>
             </div>
-
         </div>
     </section>
 
-    <section class="quiz-section">
-        <h2>Ready to Challenge Yourself?</h2>
-
+    <section class="quiz-section" hidden>
+        <h2>🌱 Test Your Knowledge</h2>
         <p>Answer 15 questions and check your score!</p>
 
-        <div id="progress-container" hidden>
+        <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
 
         <div id="quiz"></div>
+
+        <button id="next-button" onclick="nextQuestions()" hidden>
+            Next Questions →
+        </button>
+
+        <div id="result"></div>
+
+        <button id="home-button" onclick="goHome()" hidden>
+            Back to Home
+        </button>
     </section>
 
     <footer>
