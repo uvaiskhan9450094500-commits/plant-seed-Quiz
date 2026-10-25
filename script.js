@@ -103,117 +103,152 @@ var questions = [
 
 var currentQuestion = 0;
 var score = 0;
-var answered = false;
+var questionsPerPage = 2;
+var answeredQuestions = [];
 
 function startQuiz() {
     currentQuestion = 0;
     score = 0;
-    
-    document.body.classList.add("quiz-started");
+    answeredQuestions = [];
 
-    showQuestion();
+    document.querySelector(".welcome-section").hidden = true;
+    document.querySelector(".learning-section").hidden = true;
+    document.querySelector(".quiz-section").hidden = false;
+
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("home-button").hidden = true;
+
+    showQuestions();
 }
 
-function showQuestion() {
-    answered = false;
+function showQuestions() {
+    var html = "";
+    var endQuestion = Math.min(
+        currentQuestion + questionsPerPage,
+        questions.length
+    );
 
-    var q = questions[currentQuestion];
+    for (var i = currentQuestion; i < endQuestion; i++) {
+        html += "<div class='question-card'>";
+        html += "<h3>Question " + (i + 1) + " of " + questions.length + "</h3>";
+        html += "<p>" + questions[i].question + "</p>";
 
-    updateProgress();
+        for (var j = 0; j < questions[i].options.length; j++) {
+            html += "<label class='option' id='option-" + i + "-" + j + "'>";
+            html += "<input type='radio' name='question-" + i +
+                "' value='" + j + "' onchange='checkAnswer(" + i + "," + j + ")'>";
+            html += " " + questions[i].options[j];
+            html += "</label>";
+        }
 
-    var html = "<h2>Question " +
-        (currentQuestion + 1) + " of " +
-        questions.length + "</h2>";
-
-    html += "<p>" + q.question + "</p>";
-
-    for (var i = 0; i < q.options.length; i++) {
-        html += "<button onclick='checkAnswer(" +
-            i + ")'>" + q.options[i] + "</button> ";
+        html += "<p id='feedback-" + i + "' class='answer-feedback'></p>";
+        html += "</div>";
     }
 
-    html += "<p id='message'></p>";
-
-    
-
     document.getElementById("quiz").innerHTML = html;
+
+    var progress = (currentQuestion / questions.length) * 100;
+    document.getElementById("progress-bar").style.width = progress + "%";
+
+    var nextButton = document.getElementById("next-button");
+    nextButton.hidden = false;
+    nextButton.innerHTML =
+        endQuestion >= questions.length ? "Submit Quiz" : "Next Questions →";
 }
 
-function checkAnswer(optionIndex) {
-    if (answered) {
+function checkAnswer(questionIndex, optionIndex) {
+    if (answeredQuestions[questionIndex]) {
         return;
     }
 
-    answered = true;
+    answeredQuestions[questionIndex] = true;
 
-    var q = questions[currentQuestion];
-    var selectedAnswer = q.options[optionIndex];
-    var correctAnswer = q.answer;
-    var message = document.getElementById("message");
-    var buttons = document.querySelectorAll("#quiz button");
+    var question = questions[questionIndex];
+    var selectedAnswer = question.options[optionIndex];
+    var correctIndex = question.options.indexOf(question.answer);
 
-    if (selectedAnswer === correctAnswer) {
+    var correctLabel = document.getElementById(
+        "option-" + questionIndex + "-" + correctIndex
+    );
+
+    var selectedLabel = document.getElementById(
+        "option-" + questionIndex + "-" + optionIndex
+    );
+
+    var feedback = document.getElementById("feedback-" + questionIndex);
+
+    if (selectedAnswer === question.answer) {
         score++;
-        message.innerHTML = "Correct Answer! Well done!";
+        selectedLabel.classList.add("correct");
+        feedback.innerHTML = " Correct Answer!";
+        feedback.style.color = "green";
     } else {
-        message.innerHTML =
-            "Wrong Answer! Correct answer: " + correctAnswer;
+        selectedLabel.classList.add("wrong");
+        correctLabel.classList.add("correct");
+        feedback.innerHTML = " Wrong Answer!";
+        feedback.style.color = "red";
     }
 
-    for (var i = 0; i < q.options.length; i++) {
-        buttons[i].disabled = true;
+    var radios = document.querySelectorAll(
+        "input[name='question-" + questionIndex + "']"
+    );
 
-        if (q.options[i] === correctAnswer) {
-            buttons[i].style.backgroundColor = "green";
+    radios.forEach(function(radio) {
+        radio.disabled = true;
+    });
+}
+
+function nextQuestions() {
+    var endQuestion = Math.min(
+        currentQuestion + questionsPerPage,
+        questions.length
+    );
+
+    for (var i = currentQuestion; i < endQuestion; i++) {
+        if (!answeredQuestions[i]) {
+            alert("Please answer Question " + (i + 1) + " first!");
+            return;
         }
     }
 
-    if (selectedAnswer !== correctAnswer) {
-        buttons[optionIndex].style.backgroundColor = "red";
-    }
-
-    setTimeout(function() {
-        nextQuestion();
-    }, 500);
-}
-
-
-function nextQuestion() {
-    currentQuestion++;
-
-    if (currentQuestion < questions.length) {
-        showQuestion();
-    } else {
+    if (endQuestion >= questions.length) {
         showResult();
+    } else {
+        currentQuestion = endQuestion;
+        showQuestions();
+        window.scrollTo(0, 0);
     }
 }
 
 function showResult() {
+    document.getElementById("quiz").innerHTML = "";
+    document.getElementById("next-button").hidden = true;
+    document.getElementById("progress-bar").style.width = "100%";
+
     var percentage = Math.round((score / questions.length) * 100);
 
-    var html = "<h2>Quiz Completed!</h2>";
-
-    html += "<h3>Your Score: " + score +
-        " out of " + questions.length + "</h3>";
-
+    var html = "<h3>🎉 Quiz Completed!</h3>";
+    html += "<p>Your Score: " + score + " out of " + questions.length + "</p>";
     html += "<p>Your Result: " + percentage + "%</p>";
 
     if (percentage >= 80) {
-        html += "<p>Excellent! You know a lot about plants!</p>";
+        html += "<p>Excellent! You know a lot about plants! 🌿</p>";
     } else if (percentage >= 50) {
         html += "<p>Good job! Keep learning about plants!</p>";
     } else {
         html += "<p>Keep practising! You can do better!</p>";
     }
 
-    html += "<button onclick='startQuiz()'>Play Again</button>";
-
-    document.getElementById("quiz").innerHTML = html;
+    document.getElementById("result").innerHTML = html;
+    document.getElementById("home-button").hidden = false;
 }
 
-function updateProgress() {
-    var progress = ((currentQuestion + 1) / questions.length) * 100;
+function goHome() {
+    document.querySelector(".welcome-section").hidden = false;
+    document.querySelector(".learning-section").hidden = false;
+    document.querySelector(".quiz-section").hidden = true;
 
-    document.getElementById("progress-bar").style.width =
-        progress + "%";
+    document.getElementById("quiz").innerHTML = "";
+    document.getElementById("result").innerHTML = "";
 }
+
